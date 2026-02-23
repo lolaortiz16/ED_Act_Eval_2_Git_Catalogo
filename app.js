@@ -24,9 +24,9 @@ function renderMovies() {
         <span class="badge">${m.year}</span>
       </div>
       <div class="actions">
-        <!-- En ramas se añadirán botones por película -->
+        <button class="small del" data-action="delete">Eliminar</button>
       </div>
-    `;
+`;
 
     movieList.appendChild(li);
   }
@@ -46,6 +46,26 @@ function addMovie() {
   yearInput.value = "";
   renderMovies();
 }
+
+function deleteMovieById(id) {
+  movies = movies.filter(m => m.id !== id);
+  renderMovies();
+}
+
+movieList.addEventListener("click", (e) => {
+  const btn = e.target.closest("button");
+  if (!btn) return;
+
+  const li = e.target.closest("li.item");
+  if (!li) return;
+
+  const id = Number(li.dataset.id);
+
+  if (btn.dataset.action === "delete") {
+    deleteMovieById(id);
+  }
+});
+
 
 // Solo funciona añadir al inicio
 addBtn.addEventListener("click", addMovie);

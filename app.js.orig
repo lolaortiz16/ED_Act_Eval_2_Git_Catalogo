@@ -24,8 +24,11 @@ function renderMovies() {
         <span class="badge">${m.year}</span>
       </div>
       <div class="actions">
+<<<<<<< HEAD
         <button class="small del" data-action="delete">Eliminar</button>
+=======
         <button class="small edt" data-action="edit">Editar</button>
+>>>>>>> editar
       </div>
 `;
 
@@ -49,6 +52,10 @@ function addMovie() {
   renderMovies();
 }
 
+<<<<<<< HEAD
+function deleteMovieById(id) {
+  movies = movies.filter(m => m.id !== id);
+=======
 function editMovieById(id) {
   const movie = movies.find(m => m.id === id);
   if (!movie) return;
@@ -68,6 +75,7 @@ function editMovieById(id) {
 
   movie.title = newTitle.trim();
   movie.year = newYear;
+>>>>>>> editar
   renderMovies();
 }
 
@@ -80,28 +88,13 @@ movieList.addEventListener("click", (e) => {
 
   const id = Number(li.dataset.id);
 
-  if (btn.dataset.action === "edit") {
-    editMovieById(id);
-  }
-});
-
-
-function deleteMovieById(id) {
-  movies = movies.filter(m => m.id !== id);
-  renderMovies();
-}
-
-movieList.addEventListener("click", (e) => {
-  const btn = e.target.closest("button");
-  if (!btn) return;
-
-  const li = e.target.closest("li.item");
-  if (!li) return;
-
-  const id = Number(li.dataset.id);
-
+<<<<<<< HEAD
   if (btn.dataset.action === "delete") {
     deleteMovieById(id);
+=======
+  if (btn.dataset.action === "edit") {
+    editMovieById(id);
+>>>>>>> editar
   }
 });
 
